@@ -5,7 +5,7 @@ Author: Mo'ath shakhatreh
 
 Links and Resources:
 
-pull request link : https://github.com/Moath-shakhatreh/madlib-cli/pull/1
+pull request link : https://github.com/Moath-shakhatreh/madlib-cli/pull/2
 
 back-end server url (when applicable)
 front-end application (when applicable)
