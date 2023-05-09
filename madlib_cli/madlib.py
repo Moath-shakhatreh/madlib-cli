@@ -1,6 +1,9 @@
 import re
+
+def intro():
+   print('Welcome to Madlib game , this game take some words from you and reform the text pased on the user inputs')
+
 def read_template(path) :
-    print('Welcome to Madlib game')
     try: 
      with open(path) as f : 
         rea = f.read()
@@ -9,9 +12,6 @@ def read_template(path) :
             raise
 
 
-# if __name__ == '__main__' :
-# read_template('assets/dark_and_stormy_night_template.txt')
-# read_template('assets/moath.txt')
 
 def parse_template(text):
  x = text
@@ -22,15 +22,32 @@ def parse_template(text):
 
 # It was a {} and {} {}.
 
-def merge(text,tup):
- l1 = text
- for x in tup :
-    l1 = l1.replace('{}',x,1) 
-    
- return l1
+def merge(template,parts):
+ template = template.format(*parts)
+ return template
 
 
 
 
+def prompts(lst):
+   input_arr=[]
+   for element in lst:
+      user_input = input(f'enter a {element} ')
+      input_arr.append(user_input)
+   return input_arr       
 
-        
+def new_file(merged_template):
+   with open("/home/moath/madlib-cli/assets/result.text", "w") as f:
+      f.write(merged_template)
+
+
+if __name__ == '__main__' :
+   intro()
+   returned_content = read_template("/home/moath/madlib-cli/assets/dark_and_stormy_night_template.txt")
+   stripped, parts = parse_template(returned_content)
+   user_prompts = prompts(parts)
+   merged_txt = merge(stripped, user_prompts)
+   print(merged_txt)
+   new_file(merged_txt)
+# read_template('assets/dark_and_stormy_night_template.txt')
+# read_template('assets/moath.txt')
