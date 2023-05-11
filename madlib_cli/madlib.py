@@ -37,13 +37,13 @@ def prompts(lst):
    return input_arr       
 
 def new_file(merged_template):
-   with open("/home/moath/madlib-cli/assets/result.text", "w") as f:
+   with open("assets/result.text", "w") as f:
       f.write(merged_template)
 
 
 if __name__ == '__main__' :
    intro()
-   returned_content = read_template("/home/moath/madlib-cli/assets/dark_and_stormy_night_template.txt")
+   returned_content = read_template("assets/longText.txt")
    stripped, parts = parse_template(returned_content)
    user_prompts = prompts(parts)
    merged_txt = merge(stripped, user_prompts)
